@@ -1,0 +1,276 @@
+.Grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: -1rem;
+  box-sizing: border-box;
+}
+
+.GridItem {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.GridItem--xs-1 {
+  flex: 0 0 8.33333%;
+  max-width: 8.33333%;
+}
+
+.GridItem--xs-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
+}
+
+.GridItem--xs-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.GridItem--xs-4 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+.GridItem--xs-5 {
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%;
+}
+
+.GridItem--xs-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.GridItem--xs-7 {
+  flex: 0 0 58.33333%;
+  max-width: 58.33333%;
+}
+
+.GridItem--xs-8 {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+
+.GridItem--xs-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.GridItem--xs-10 {
+  flex: 0 0 83.33333%;
+  max-width: 83.33333%;
+}
+
+.GridItem--xs-11 {
+  flex: 0 0 91.66667%;
+  max-width: 91.66667%;
+}
+
+.GridItem--xs-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .GridItem--sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .GridItem--sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .GridItem--sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .GridItem--sm-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .GridItem--sm-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .GridItem--sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .GridItem--sm-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .GridItem--sm-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .GridItem--sm-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .GridItem--sm-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .GridItem--sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .GridItem--sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .GridItem--md-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .GridItem--md-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .GridItem--md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .GridItem--md-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .GridItem--md-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .GridItem--md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .GridItem--md-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .GridItem--md-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .GridItem--md-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .GridItem--md-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .GridItem--md-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .GridItem--md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .GridItem--lg-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .GridItem--lg-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .GridItem--lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .GridItem--lg-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .GridItem--lg-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .GridItem--lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .GridItem--lg-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .GridItem--lg-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .GridItem--lg-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .GridItem--lg-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .GridItem--lg-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .GridItem--lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .GridItem--xl-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .GridItem--xl-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  .GridItem--xl-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .GridItem--xl-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  .GridItem--xl-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+  .GridItem--xl-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .GridItem--xl-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+  .GridItem--xl-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+  .GridItem--xl-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .GridItem--xl-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+  }
+  .GridItem--xl-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .GridItem--xl-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

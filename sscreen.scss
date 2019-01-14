@@ -1,0 +1,84 @@
+@import './lib/breakpoint';
+@import './lib/string';
+
+$--sscreen--breakpoints: () !global;
+
+$screen-prefix: '';
+$screen-style: camelCase;
+
+@mixin screen-set($breakpoints, $prefix: $screen-prefix, $style: $screen-style) {
+  $--sscreen--breakpoints: $breakpoints !global;
+
+  @each $name, $value in $breakpoints {
+    $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: '-');
+
+    // Up
+    $min: sscreen--breakpoint-min($name, $breakpoints);
+
+    @if $min {
+      $min-name: #{$infix}up;
+
+      @if $style == camelCase {
+        $min-name: sscreen--string-camelize($min-name);
+      }
+
+      @custom-media --#{$prefix}#{$min-name} (min-width: #{$min});
+    }
+
+
+    // Down
+    $max: sscreen--breakpoint-max($name, $breakpoints);
+
+    @if $max {
+      $max-name: #{$infix}down;
+
+      @if $style == camelCase {
+        $max-name: sscreen--string-camelize($max-name);
+      }
+
+      @custom-media --#{$prefix}#{$max-name} (max-width: #{$max});
+    }
+  }
+}
+
+@function screen-get() {
+  @return $--sscreen--breakpoints;
+}
+
+@mixin screen-up($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints) {
+  $min: sscreen--breakpoint-min($name, $breakpoints);
+  $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: '-');
+
+  @if $min {
+    $min-name: #{$infix}up;
+
+    @if $style == camelCase {
+      $min-name: sscreen--string-camelize($min-name);
+    }
+
+    @media (--#{$prefix}#{$min-name}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin screen-down($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints) {
+  $max: sscreen--breakpoint-max($name, $breakpoints);
+  $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: '-');
+
+  @if $max {
+    $max-name: #{$infix}down;
+
+    @if $style == camelCase {
+      $max-name: sscreen--string-camelize($max-name);
+    }
+
+    @media (--#{$prefix}#{$max-name}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

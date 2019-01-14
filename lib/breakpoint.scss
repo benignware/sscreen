@@ -1,0 +1,19 @@
+@function sscreen--breakpoint-next($name, $breakpoints: $breakpoints) {
+  $breakpoint-names: map-keys($breakpoints);
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function sscreen--breakpoint-min($name, $breakpoints: $breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@function sscreen--breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: sscreen--breakpoint-next($name, $breakpoints);
+  @return if($next, sscreen--breakpoint-min($next, $breakpoints) - .02px, null);
+}
+
+@function sscreen--breakpoint-infix($name, $breakpoints: $breakpoints, $delimiter: '-') {
+  @return if(sscreen--breakpoint-min($name, $breakpoints) == null, '', '#{$name}#{$delimiter}');
+}

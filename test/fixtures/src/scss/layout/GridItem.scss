@@ -1,0 +1,16 @@
+.GridItem {
+  padding: 1rem;
+  box-sizing: border-box;
+  $columns: 12;
+
+  @each $breakpoint in map-keys(screen-get()) {
+    @include screen-up($breakpoint) {
+      @for $size from 1 through $columns {
+        &--#{$breakpoint}-#{$size} {
+          flex: 0 0 percentage($size / $columns);
+          max-width: percentage($size / $columns);
+        }
+      }
+    }
+  }
+}
