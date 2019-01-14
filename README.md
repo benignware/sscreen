@@ -13,6 +13,8 @@ npm i sscreen -D
 
 The library consists of a mixin `screen-set` which lets you define your breakpoints and a function `screen-get` for retrieval as well as mixins `screen-up` and `screen-down` by which you actually make your stuff responsive.
 
+> Note: For getting `sscreen` to work in recent user-agents, `@custom-media` directives must be transpiled on top of scss compilation. See [postcss-custom-media](https://github.com/postcss/postcss-custom-media) for further information
+
 
 Here's a complete example...
 
@@ -65,6 +67,22 @@ $screen-style: camelCase;
 Output:
 
 ```css
+@custom-media --prefix-down (max-width: 575.98px);
+
+@custom-media --prefix-smUp (min-width: 576px);
+
+@custom-media --prefix-smDown (max-width: 767.98px);
+
+@custom-media --prefix-mdUp (min-width: 768px);
+
+@custom-media --prefix-mdDown (max-width: 991.98px);
+
+@custom-media --prefix-lgUp (min-width: 992px);
+
+@custom-media --prefix-lgDown (max-width: 1199.98px);
+
+@custom-media --prefix-xlUp (min-width: 1200px);
+
 .Grid {
   display: flex;
   flex-wrap: wrap;
@@ -83,47 +101,64 @@ Output:
   max-width: 8.33333%;
 }
 
-.GridItem--xs-2 {
-  flex: 0 0 16.66667%;
-  max-width: 16.66667%;
-}
-
 /* ... */
-
-.GridItem--xs-11 {
-  flex: 0 0 91.66667%;
-  max-width: 91.66667%;
-}
 
 .GridItem--xs-12 {
   flex: 0 0 100%;
   max-width: 100%;
 }
 
-@media (min-width: 576px) {
+@media (--prefix-smUp) {
   .GridItem--sm-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
-  .GridItem--sm-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
-  }
   /* ... */
-  .GridItem--sm-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
-  }
   .GridItem--sm-12 {
     flex: 0 0 100%;
     max-width: 100%;
   }
 }
 
-/* ... */
+@media (--prefix-mdUp) {
+  .GridItem--md-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (--prefix-lgUp) {
+  .GridItem--lg-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (--prefix-xlUp) {
+  .GridItem--xl-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--xl-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 ```
 
-> Note: `varss` is intented for being used at application level and is currently not suited for being incorporated into a dedicated scss library
+> Note: `sscreen` is intented for being used at application level and is currently not suited for being incorporated into a dedicated scss library
 
 ## Development
 

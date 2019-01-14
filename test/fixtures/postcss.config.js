@@ -1,6 +1,8 @@
 module.exports = {
   plugins: [
-    require('postcss-custom-media')(),
+    require('postcss-custom-media')({
+      preserve: true
+    }),
     require('postcss-prettify')()
   ],
 };

@@ -15,24 +15,37 @@ describe('sscreen', () => {
       ]
     });
     const expectedFile = path.join(__dirname, 'expected/index.css');
-    const { plugins } = require(path.resolve(__dirname, 'fixtures/postcss.config.js'));
 
-    postcss(plugins)
+    const { css: actual } = postcss([
+      require('postcss-prettify')()
+    ]).process(css, {
+      from: undefined
+    });
+
+    console.log('CSS', actual);
+
+    let expected = '';
+
+    if (fs.existsSync(expectedFile)) {
+      expected = fs.readFileSync(expectedFile, 'utf-8');
+    } else {
+      expected = actual;
+      fs.mkdirSync(path.join(__dirname, 'expected'));
+      fs.writeFileSync(expectedFile, actual, 'utf-8');
+    }
+
+    assert.equal(actual, expected);
+
+    postcss([
+      require('postcss-prettify')()
+    ])
       .process(css, {
         from: undefined
       })
       .then(({ css: actual }) => {
-        let expected = '';
+        console.log('CSS', actual);
 
-        if (fs.existsSync(expectedFile)) {
-          expected = fs.readFileSync(expectedFile, 'utf-8');
-        } else {
-          expected = actual;
-          fs.mkdirSync(path.join(__dirname, 'expected'));
-          fs.writeFileSync(expectedFile, actual, 'utf-8');
-        }
-
-        assert.equal(actual, expected);
-      });
+      })
+      .catch()
   });
 });
