@@ -1,70 +1,61 @@
-# varss
+# sscreen
 
-A scss library for working with CSS Variables
+A scss library for working with custom media queries
 
 
 ## Install
 
 ```cli
-npm i varss -D
+npm i sscreen -D
 ```
 
 ## Usage
 
-Basically you make use of a mixin `var-set` for variable definition in conjunction with a function `var-get` for accessing your variable as css custom property. You can pass in maps as well and get back maps containing css variables then accordingly.
+The library consists of a mixin `screen-set` which lets you define your breakpoints and a function `screen-get` for retrieval as well as mixins `screen-up` and `screen-down` by which you actually make your stuff responsive.
+
 
 Here's a complete example...
 
 ```scss
-// variables.scss
-$var-prefix: prefix-;
-$var-style: camelCase;
+$screen-prefix: prefix-;
+$screen-style: camelCase;
 
-:root {
-  @include var-set((
-    borderWidth: 1px,
-    borderRadius: 3px,
-    fontSize: 12px,
-    context: (
-      primary: blue,
-      secondary: orange
-    ),
-    inverse: (
-      primary: white,
-      secondary: black
-    )
-  ));
+// Define your breakpoints
+@include screen-set((
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+));
+```
+
+```scss
+// Grid.scss
+.Grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: -1rem;
+  box-sizing: border-box;
 }
 ```
 
 ```scss
-// Button.scss
-.Button {
-  -webkit-appearance: none;
-  cursor: pointer;
-  padding: 0.25rem 0.1rem;
-  border-style: solid;
-  border-radius: var-get('borderRadius');
-  border-width: var-get('borderWidth');
-  font-size: var-get('fontSize');
+// GridItem.scss
+.GridItem {
+  padding: 1rem;
+  box-sizing: border-box;
+  $columns: 12;
 
-  // You may either refer to variables by their flat name...
-  &--outline#{&}--primary {
-    border-color: var-get('contextPrimary');
-    color: var-get('contextPrimary');
-  }
-
-  &--outline#{&}--secondary {
-    border-color: var-get('contextSecondary');
-    color: var-get('contextSecondary');
-  }
-
-  // Or access lists and maps as specified via `var-set`
-  @each $name, $value in var-get('context') {
-    &--#{$name}:not(&--outline) {
-      border-color: $value;
-      background: $value;
-      color: map-get(var-get('inverse'), $name);
+  @each $breakpoint in map-keys(screen-get()) {
+    @include screen-up($breakpoint) {
+      @for $size from 1 through $columns {
+        &--#{$breakpoint}-#{$size} {
+          flex: 0 0 percentage($size / $columns);
+          max-width: percentage($size / $columns);
+        }
+      }
     }
   }
 }
@@ -74,47 +65,62 @@ $var-style: camelCase;
 Output:
 
 ```css
-:root {
-  --prefix-borderWidth: 1px;
-  --prefix-borderRadius: 3px;
-  --prefix-fontSize: 12px;
-  --prefix-contextPrimary: blue;
-  --prefix-contextSecondary: orange;
-  --prefix-inversePrimary: white;
-  --prefix-inverseSecondary: black;
+.Grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: -1rem;
+  box-sizing: border-box;
 }
 
-.Button {
-  -webkit-appearance: none;
-  cursor: pointer;
-  padding: 0.25rem 0.1rem;
-  border-style: solid;
-  border-radius: var(--prefix-borderRadius);
-  border-width: var(--prefix-borderWidth);
-  font-size: var(--prefix-fontSize);
+.GridItem {
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-.Button--outline.Button--primary {
-  border-color: var(--prefix-contextPrimary);
-  color: var(--prefix-contextPrimary);
+.GridItem--xs-1 {
+  flex: 0 0 8.33333%;
+  max-width: 8.33333%;
 }
 
-.Button--outline.Button--secondary {
-  border-color: var(--prefix-contextSecondary);
-  color: var(--prefix-contextSecondary);
+.GridItem--xs-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%;
 }
 
-.Button--primary:not(.Button--outline) {
-  border-color: var(--prefix-contextPrimary);
-  background: var(--prefix-contextPrimary);
-  color: var(--prefix-inversePrimary);
+/* ... */
+
+.GridItem--xs-11 {
+  flex: 0 0 91.66667%;
+  max-width: 91.66667%;
 }
 
-.Button--secondary:not(.Button--outline) {
-  border-color: var(--prefix-contextSecondary);
-  background: var(--prefix-contextSecondary);
-  color: var(--prefix-inverseSecondary);
+.GridItem--xs-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
 }
+
+@media (min-width: 576px) {
+  .GridItem--sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  .GridItem--sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+  }
+  /* ... */
+  .GridItem--sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%;
+  }
+  .GridItem--sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* ... */
 ```
 
 > Note: `varss` is intented for being used at application level and is currently not suited for being incorporated into a dedicated scss library
