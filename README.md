@@ -51,9 +51,10 @@ $screen-style: camelCase;
   $columns: 12;
 
   @each $breakpoint in map-keys(screen-get()) {
+    $infix: screen-infix($breakpoint);
     @include screen-up($breakpoint) {
       @for $size from 1 through $columns {
-        &--#{$breakpoint}-#{$size} {
+        &--#{$infix}#{$size} {
           flex: 0 0 percentage($size / $columns);
           max-width: percentage($size / $columns);
         }
@@ -61,7 +62,6 @@ $screen-style: camelCase;
     }
   }
 }
-
 ```
 
 Output:
@@ -96,14 +96,14 @@ Output:
   box-sizing: border-box;
 }
 
-.GridItem--xs-1 {
+.GridItem--1 {
   flex: 0 0 8.33333%;
   max-width: 8.33333%;
 }
 
 /* ... */
 
-.GridItem--xs-12 {
+.GridItem--12 {
   flex: 0 0 100%;
   max-width: 100%;
 }

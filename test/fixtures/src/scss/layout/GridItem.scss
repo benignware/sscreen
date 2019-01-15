@@ -4,9 +4,10 @@
   $columns: 12;
 
   @each $breakpoint in map-keys(screen-get()) {
+    $infix: screen-infix($breakpoint);
     @include screen-up($breakpoint) {
       @for $size from 1 through $columns {
-        &--#{$breakpoint}-#{$size} {
+        &--#{$infix}#{$size} {
           flex: 0 0 percentage($size / $columns);
           max-width: percentage($size / $columns);
         }
