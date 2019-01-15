@@ -45,6 +45,10 @@ $screen-style: camelCase;
   @return $--sscreen--breakpoints;
 }
 
+@function screen-infix($breakpoint, $breakpoints: $--sscreen--breakpoints) {
+  @return sscreen--breakpoint-infix($name, $breakpoints, $delimiter: '-');
+}
+
 @mixin screen-up($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints) {
   $min: sscreen--breakpoint-min($name, $breakpoints);
   $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: '-');
