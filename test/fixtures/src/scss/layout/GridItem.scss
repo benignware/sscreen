@@ -5,6 +5,7 @@
 
   @each $breakpoint in map-keys(screen-get()) {
     $infix: screen-infix($breakpoint);
+
     @include screen-up($breakpoint) {
       @for $size from 1 through $columns {
         &--#{$infix}#{$size} {

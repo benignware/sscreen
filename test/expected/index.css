@@ -1,18 +1,18 @@
-@custom-media --prefix-down (max-width: 575.98px);
+@custom-media --prefix-xs-down (max-width: 575.98px);
 
-@custom-media --prefix-smUp (min-width: 576px);
+@custom-media --prefix-sm-up (min-width: 576px);
 
-@custom-media --prefix-smDown (max-width: 767.98px);
+@custom-media --prefix-sm-down (max-width: 767.98px);
 
-@custom-media --prefix-mdUp (min-width: 768px);
+@custom-media --prefix-md-up (min-width: 768px);
 
-@custom-media --prefix-mdDown (max-width: 991.98px);
+@custom-media --prefix-md-down (max-width: 991.98px);
 
-@custom-media --prefix-lgUp (min-width: 992px);
+@custom-media --prefix-lg-up (min-width: 992px);
 
-@custom-media --prefix-lgDown (max-width: 1199.98px);
+@custom-media --prefix-lg-down (max-width: 1199.98px);
 
-@custom-media --prefix-xlUp (min-width: 1200px);
+@custom-media --prefix-xl-up (min-width: 1200px);
 
 .Grid {
   display: flex;
@@ -27,67 +27,67 @@
   box-sizing: border-box;
 }
 
-.GridItem--xs-1 {
+.GridItem--1 {
   flex: 0 0 8.33333%;
   max-width: 8.33333%;
 }
 
-.GridItem--xs-2 {
+.GridItem--2 {
   flex: 0 0 16.66667%;
   max-width: 16.66667%;
 }
 
-.GridItem--xs-3 {
+.GridItem--3 {
   flex: 0 0 25%;
   max-width: 25%;
 }
 
-.GridItem--xs-4 {
+.GridItem--4 {
   flex: 0 0 33.33333%;
   max-width: 33.33333%;
 }
 
-.GridItem--xs-5 {
+.GridItem--5 {
   flex: 0 0 41.66667%;
   max-width: 41.66667%;
 }
 
-.GridItem--xs-6 {
+.GridItem--6 {
   flex: 0 0 50%;
   max-width: 50%;
 }
 
-.GridItem--xs-7 {
+.GridItem--7 {
   flex: 0 0 58.33333%;
   max-width: 58.33333%;
 }
 
-.GridItem--xs-8 {
+.GridItem--8 {
   flex: 0 0 66.66667%;
   max-width: 66.66667%;
 }
 
-.GridItem--xs-9 {
+.GridItem--9 {
   flex: 0 0 75%;
   max-width: 75%;
 }
 
-.GridItem--xs-10 {
+.GridItem--10 {
   flex: 0 0 83.33333%;
   max-width: 83.33333%;
 }
 
-.GridItem--xs-11 {
+.GridItem--11 {
   flex: 0 0 91.66667%;
   max-width: 91.66667%;
 }
 
-.GridItem--xs-12 {
+.GridItem--12 {
   flex: 0 0 100%;
   max-width: 100%;
 }
 
-@media (--prefix-smUp) {
+@media (--prefix-sm-up) {
   .GridItem--sm-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -138,7 +138,7 @@
   }
 }
 
-@media (--prefix-mdUp) {
+@media (--prefix-md-up) {
   .GridItem--md-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -189,7 +189,7 @@
   }
 }
 
-@media (--prefix-lgUp) {
+@media (--prefix-lg-up) {
   .GridItem--lg-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -240,7 +240,7 @@
   }
 }
 
-@media (--prefix-xlUp) {
+@media (--prefix-xl-up) {
   .GridItem--xl-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
