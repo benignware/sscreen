@@ -23,7 +23,7 @@ Here's a complete example...
 module.exports = {
   plugins: [
     require('postcss-custom-media')({
-      preserve: true
+      preserve: true // For the sake of example, we preserve our transpiled @custom-media rules
     })
   ]
 };
