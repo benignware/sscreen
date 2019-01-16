@@ -1,6 +1,6 @@
 {
   "name": "sscreen",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A scss library for working with custom media queries",
   "main": "sccreen.scss",
   "repository": {

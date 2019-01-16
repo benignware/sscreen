@@ -1,5 +1,5 @@
 $screen-prefix: prefix-;
-$screen-style: camelCase;
+$screen-style: kebabCase;
 
 // Define your breakpoints
 @include screen-set((

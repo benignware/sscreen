@@ -16,7 +16,7 @@ $screen-style: camelCase;
     $min: sscreen--breakpoint-min($name, $breakpoints);
 
     @if $min {
-      $min-name: #{$infix}up;
+      $min-name: #{$name}-up;
 
       @if $style == camelCase {
         $min-name: sscreen--string-camelize($min-name);
@@ -30,7 +30,7 @@ $screen-style: camelCase;
     $max: sscreen--breakpoint-max($name, $breakpoints);
 
     @if $max {
-      $max-name: #{$infix}down;
+      $max-name: #{$name}-down;
 
       @if $style == camelCase {
         $max-name: sscreen--string-camelize($max-name);
