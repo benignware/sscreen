@@ -18,9 +18,20 @@ The library consists of a mixin `screen-set` which lets you define your breakpoi
 
 Here's a complete example...
 
+```js
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('postcss-custom-media')({
+      preserve: true
+    })
+  ]
+};
+```
+
 ```scss
 $screen-prefix: prefix-;
-$screen-style: camelCase;
+$screen-style: kebabCase;
 
 // Define your breakpoints
 @include screen-set((
@@ -52,6 +63,7 @@ $screen-style: camelCase;
 
   @each $breakpoint in map-keys(screen-get()) {
     $infix: screen-infix($breakpoint);
+
     @include screen-up($breakpoint) {
       @for $size from 1 through $columns {
         &--#{$infix}#{$size} {
@@ -67,21 +79,21 @@ $screen-style: camelCase;
 Output:
 
 ```css
-@custom-media --prefix-down (max-width: 575.98px);
+@custom-media --prefix-xs-down (max-width: 575.98px);
 
-@custom-media --prefix-smUp (min-width: 576px);
+@custom-media --prefix-sm-up (min-width: 576px);
 
-@custom-media --prefix-smDown (max-width: 767.98px);
+@custom-media --prefix-sm-down (max-width: 767.98px);
 
-@custom-media --prefix-mdUp (min-width: 768px);
+@custom-media --prefix-md-up (min-width: 768px);
 
-@custom-media --prefix-mdDown (max-width: 991.98px);
+@custom-media --prefix-md-down (max-width: 991.98px);
 
-@custom-media --prefix-lgUp (min-width: 992px);
+@custom-media --prefix-lg-up (min-width: 992px);
 
-@custom-media --prefix-lgDown (max-width: 1199.98px);
+@custom-media --prefix-lg-down (max-width: 1199.98px);
 
-@custom-media --prefix-xlUp (min-width: 1200px);
+@custom-media --prefix-xl-up (min-width: 1200px);
 
 .Grid {
   display: flex;
@@ -108,7 +120,7 @@ Output:
   max-width: 100%;
 }
 
-@media (--prefix-smUp) {
+@media (min-width: 576px) {
   .GridItem--sm-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -120,7 +132,19 @@ Output:
   }
 }
 
-@media (--prefix-mdUp) {
+@media (--prefix-sm-up) {
+  .GridItem--sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
   .GridItem--md-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -132,7 +156,19 @@ Output:
   }
 }
 
-@media (--prefix-lgUp) {
+@media (--prefix-md-up) {
+  .GridItem--md-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
   .GridItem--lg-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -144,7 +180,19 @@ Output:
   }
 }
 
-@media (--prefix-xlUp) {
+@media (--prefix-lg-up) {
+  .GridItem--lg-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
   .GridItem--xl-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
@@ -155,6 +203,19 @@ Output:
     max-width: 100%;
   }
 }
+
+@media (--prefix-xl-up) {
+  .GridItem--xl-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+  }
+  /* ... */
+  .GridItem--xl-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 
 ```
 
