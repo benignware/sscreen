@@ -5,7 +5,9 @@ const path = require('path');
 const assert = require('assert');
 const postcss = require('postcss');
 
-describe('sscreen', () => {
+const packageJSON = require('../package.json');
+
+describe(`${packageJSON.name}`, () => {
   it('renders correctly', () => {
     const { css } = sass.renderSync({
       file: path.resolve(__dirname, './fixtures/src/scss/index.scss'),
@@ -21,8 +23,6 @@ describe('sscreen', () => {
     ]).process(css, {
       from: undefined
     });
-
-    console.log('CSS', actual);
 
     let expected = '';
 
@@ -43,8 +43,7 @@ describe('sscreen', () => {
         from: undefined
       })
       .then(({ css: actual }) => {
-        console.log('CSS', actual);
-
+        // We're done.
       })
       .catch()
   });

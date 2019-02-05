@@ -7,12 +7,10 @@ $screen-prefix: '';
 $screen-style: camelCase;
 $screen-breakpoint-delimiter: '-';
 
-@mixin screen-set($breakpoints, $prefix: $screen-prefix, $style: $screen-style, $delimiter: $screen-breakpoint-delimiter) {
+@mixin screen-set($breakpoints, $prefix: $screen-prefix, $style: $screen-style) {
   $--sscreen--breakpoints: $breakpoints !global;
 
   @each $name, $value in $breakpoints {
-    $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: $delimiter);
-
     // Up
     $min: sscreen--breakpoint-min($name, $breakpoints);
 
@@ -50,12 +48,11 @@ $screen-breakpoint-delimiter: '-';
   @return sscreen--breakpoint-infix($name, $breakpoints, $delimiter: $delimiter);
 }
 
-@mixin screen-up($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints, $delimiter: $screen-breakpoint-delimiter) {
+@mixin screen-up($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints) {
   $min: sscreen--breakpoint-min($name, $breakpoints);
-  $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: $delimiter);
 
   @if $min {
-    $min-name: #{$infix}up;
+    $min-name: #{$name}-up;
 
     @if $style == camelCase {
       $min-name: sscreen--string-camelize($min-name);
@@ -69,12 +66,11 @@ $screen-breakpoint-delimiter: '-';
   }
 }
 
-@mixin screen-down($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints, $delimiter: $screen-breakpoint-delimiter) {
+@mixin screen-down($name, $prefix: $screen-prefix, $style: $screen-style, $breakpoints: $--sscreen--breakpoints) {
   $max: sscreen--breakpoint-max($name, $breakpoints);
-  $infix: sscreen--breakpoint-infix($name, $breakpoints, $delimiter: $delimiter);
 
   @if $max {
-    $max-name: #{$infix}down;
+    $max-name: #{$name}-down;
 
     @if $style == camelCase {
       $max-name: sscreen--string-camelize($max-name);
