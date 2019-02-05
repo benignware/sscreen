@@ -32,6 +32,7 @@ module.exports = {
 ```scss
 $screen-prefix: prefix-;
 $screen-style: kebabCase;
+$screen-breakpoint-delimiter: '-';
 
 // Define your breakpoints
 @include screen-set((
